@@ -56,15 +56,15 @@ export default function Contact() {
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <MapPin className="w-6 h-6 text-green-600" />
-              <p className="text-gray-700">Dubai, UAE</p>
+              <p className="text-gray-700">Abu Dhabi, UAE</p>
             </div>
             <div className="flex items-center gap-4">
               <Phone className="w-6 h-6 text-green-600" />
-              <p className="text-gray-700">+971-50-123-4567</p>
+              <p className="text-gray-700">Office: 025509616 &nbsp;|&nbsp; Mobile: 0526018711</p>
             </div>
             <div className="flex items-center gap-4">
               <Mail className="w-6 h-6 text-green-600" />
-              <p className="text-gray-700">info@ritusunrise.com</p>
+              <p className="text-gray-700">ritusunriserealestategm@gmail.com</p>
             </div>
             <div className="flex items-center gap-4">
               <Clock className="w-6 h-6 text-green-600" />
