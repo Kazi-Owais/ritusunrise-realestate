@@ -275,7 +275,7 @@ export default function Header() {
               setOpenMobileDropdown(null);
             }}
           >
-            Get Started
+            Contact Us
           </Link>
         </div>
       </div>
