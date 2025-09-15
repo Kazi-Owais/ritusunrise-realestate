@@ -5,7 +5,7 @@ export default function WhatsAppButton() {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <Link
-        href="https://wa.me/971501234567" // 🔹 replace with your WhatsApp number
+        href="https://wa.me/971526018711"  // ✅ Correct format for +971 52 601 8711
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 shadow-lg transition"

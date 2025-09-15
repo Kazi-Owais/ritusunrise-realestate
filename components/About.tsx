@@ -5,8 +5,8 @@ import { Building2, Users, Home } from "lucide-react";
 export default function About() {
   const stats = [
     { icon: Building2, value: "10+", label: "Years of Experience" },
-    { icon: Users, value: "500+", label: "Happy Clients" },
-    { icon: Home, value: "300+", label: "Properties Listed" },
+    { icon: Users, value: "5000+", label: "Happy Clients" },
+    { icon: Home, value: "3000+", label: "Properties Listed" },
   ];
 
   return (
