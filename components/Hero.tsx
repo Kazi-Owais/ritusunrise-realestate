@@ -51,7 +51,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
             <a
-              href="#properties"
+              href="https://uae.dubizzle.com/property-agencies/ritu-sunrise-real-estate-general-management-llc-7449/?tab=ads"
               className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-300 text-center shadow-lg w-full sm:w-auto"
             >
               View Properties
