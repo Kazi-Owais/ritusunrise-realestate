@@ -4,9 +4,9 @@ import { Building2, Users, Home } from "lucide-react";
 
 export default function About() {
   const stats = [
-    { icon: Building2, value: "10+", label: "Years of Experience" },
-    { icon: Users, value: "5000+", label: "Happy Clients" },
-    { icon: Home, value: "3000+", label: "Properties Listed" },
+    { icon: Building2, value: "10+", label: "Years of Experience in UAE Real Estate" },
+    { icon: Users, value: "5000+", label: "Happy Clients in Dubai & Abu Dhabi" },
+    { icon: Home, value: "3000+", label: "Properties Listed Across UAE" },
   ];
 
   return (
@@ -31,9 +31,9 @@ export default function About() {
           viewport={{ once: true }}
           className="text-gray-600 max-w-3xl mx-auto text-lg"
         >
-          With over a decade of expertise, Ritusunrise Real Estate has been
-          guiding clients across the Abu Dhabi with trust and dedication. Our mission
-          is to make your property journey smooth, transparent, and rewarding.
+          With over a decade of expertise, Ritusunrise Real Estate has been guiding
+          clients across Dubai and Abu Dhabi with trust and dedication. Our mission
+          is to make your UAE property journey smooth, transparent, and rewarding.
         </motion.p>
 
         {/* Stats */}
@@ -47,10 +47,15 @@ export default function About() {
               viewport={{ once: true }}
               className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="bg-green-50 p-4 rounded-full mb-4">
-                <s.icon className="w-8 h-8 text-green-600" />
+              {/* Icon with aria-label for accessibility */}
+              <div className="bg-green-50 p-4 rounded-full mb-4" aria-label={s.label}>
+                <s.icon className="w-8 h-8 text-green-600" aria-hidden="true" />
               </div>
+
+              {/* Stat Value */}
               <h3 className="text-3xl font-bold text-gray-900">{s.value}</h3>
+
+              {/* Stat Label */}
               <p className="text-gray-600 mt-2 text-sm sm:text-base">{s.label}</p>
             </motion.div>
           ))}
