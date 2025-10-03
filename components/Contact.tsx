@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -80,63 +82,61 @@ export default function Contact() {
         >
           <div>
             <label className="block text-gray-700 font-medium mb-1">Name</label>
-            <input
+            <Input
               name="name"
               value={form.name}
               onChange={handleChange}
               type="text"
               placeholder="Enter your name"
               required
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             />
           </div>
 
           <div>
             <label className="block text-gray-700 font-medium mb-1">Email</label>
-            <input
+            <Input
               name="email"
               value={form.email}
               onChange={handleChange}
               type="email"
               placeholder="Enter your email"
               required
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             />
           </div>
 
           <div>
             <label className="block text-gray-700 font-medium mb-1">Subject</label>
-            <input
+            <Input
               name="subject"
               value={form.subject}
               onChange={handleChange}
               type="text"
               placeholder="Enter subject"
               required
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
             />
           </div>
 
           <div>
             <label className="block text-gray-700 font-medium mb-1">Message</label>
-            <textarea
+            <Input
+              as="textarea"
               name="message"
               value={form.message}
               onChange={handleChange}
               rows={4}
               placeholder="Write your message"
               required
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+              className="resize-y min-h-[100px]"
             />
           </div>
 
-          <button
+          <Button
             type="submit"
             disabled={loading}
-            className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 shadow-md transition disabled:opacity-50"
+            className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
           >
-            {loading ? "Sending..." : "Send Message"}
-          </button>
+            {loading ? 'Sending...' : 'Send Message'}
+          </Button>
         </form>
       </div>
     </section>

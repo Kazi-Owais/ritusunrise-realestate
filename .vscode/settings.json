@@ -1,5 +1,6 @@
 {
   "json.schemas": [],
+  "json.schemaDownload.enable": false,
   "css.validate": false,
   "editor.quickSuggestions": {
     "strings": true

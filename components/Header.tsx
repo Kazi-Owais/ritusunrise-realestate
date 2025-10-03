@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { Button } from "./ui/Button";
+import { Link } from "./ui/Link";
 
 type NavItem = {
   label: string;
@@ -24,9 +25,21 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 export default function Header() {
+  const [isMounted, setIsMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [desktopDropdown, setDesktopDropdown] = useState<string | null>(null);
+  
+  useEffect(() => {
+    setIsMounted(true);
+    
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
 
   // Lock body scroll when mobile menu open & handle scroll
@@ -48,12 +61,28 @@ export default function Header() {
   const toggleMobileDropdown = (label: string) =>
     setMobileDropdown(mobileDropdown === label ? null : label);
 
+  if (!isMounted) {
+    return (
+      <header className="fixed w-full z-50 bg-white shadow-md py-2">
+        <div className="container mx-auto px-4">
+          <div className="h-16 flex items-center justify-between">
+            <div className="w-32 h-8 bg-gray-200 rounded"></div>
+            <div className="hidden md:flex items-center space-x-8">
+              {Array(4).fill(0).map((_, i) => (
+                <div key={i} className="w-16 h-4 bg-gray-200 rounded"></div>
+              ))}
+            </div>
+            <div className="md:hidden w-8 h-8 bg-gray-200 rounded"></div>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "backdrop-blur-md bg-white/80 shadow-md py-2"
-          : "bg-white py-4"
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white shadow-md py-2' : 'bg-white/90 backdrop-blur-sm py-4'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,45 +109,59 @@ export default function Header() {
                   onMouseEnter={() => setDesktopDropdown(item.label)}
                   onMouseLeave={() => setDesktopDropdown(null)}
                 >
-                  <button
-                    className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
-                    aria-haspopup="true"
-                    aria-expanded={desktopDropdown === item.label}
-                  >
-                    {item.label}
-                    <svg
-                      className="w-4 h-4 mt-[2px]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                  <div className="relative group">
+                    <Button
+                      className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
+                      aria-haspopup="true"
+                      aria-expanded={desktopDropdown === item.label}
+                      onClick={() => setDesktopDropdown(desktopDropdown === item.label ? null : item.label)}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
-                  {desktopDropdown === item.label && (
-                    <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 animate-fade-in">
-                      {item.children.map((sub) => (
-                        <Link
-                          key={sub.label}
-                          href={sub.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                      {item.label}
+                      <svg
+                        className={`w-4 h-4 transition-transform ${
+                          desktopDropdown === item.label ? 'rotate-180' : ''
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </Button>
+                  </div>
+                  <div
+                    className={`absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 transition-all duration-200 overflow-hidden ${
+                      desktopDropdown === item.label
+                        ? 'opacity-100 translate-y-0 visible'
+                        : 'opacity-0 -translate-y-2 invisible'
+                    }`}
+                  >
+                    {item.children?.map((sub) => (
+                      <Link
+                        key={sub.label}
+                        href={sub.href}
+                        className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
+                        onClick={() => {
+                          setDesktopDropdown(null);
+                          setMenuOpen(false);
+                        }}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <Link
                   key={item.label}
-                  href={item.href!}
-                  className="relative text-gray-700 hover:text-green-600 transition-colors after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-green-600 after:left-0 after:-bottom-1 hover:after:w-full after:transition-all"
+                  href={item.href || "#"}
+                  className="text-gray-700 hover:text-green-600 transition-colors"
+                  onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
@@ -177,7 +220,12 @@ export default function Header() {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
                 <div

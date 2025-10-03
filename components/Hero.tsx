@@ -14,20 +14,26 @@ export default function Hero() {
     <section
       ref={ref}
       className="relative min-h-[80vh] md:h-[90vh] max-h-screen overflow-hidden flex items-center"
+      aria-label="Hero section"
+      itemScope
     >
       {/* Background Image with Parallax */}
       <motion.div
         style={{ y }}
         className="absolute inset-0 w-full h-full will-change-transform"
+        role="img"
+        aria-label="Luxury Property in Abu Dhabi - Ritusunrise Real Estate"
       >
         <Image
           src="/image.png"
-          alt="Luxury Property in Abu Dhabi"
+          alt="Luxury Property in Abu Dhabi - Ritusunrise Real Estate"
           fill
           priority
           quality={100}
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover object-center"
+          itemProp="image"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-blue-900/50"></div>
       </motion.div>
@@ -41,18 +47,22 @@ export default function Hero() {
           className="max-w-2xl text-white"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6 drop-shadow-lg">
-            Discover Your Dream{" "}
-            <span className="text-green-500">Property</span> in Abu Dhabi
+            Discover Your Dream{' '}
+            <span className="text-green-500" itemProp="name">Property</span> in Abu Dhabi
           </h1>
+          <meta itemProp="description" content="Find luxury properties in Abu Dhabi with Ritusunrise Real Estate. Your trusted partner for buying, selling, and renting properties in the UAE." />
           <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 max-w-3xl mx-auto">
-            Find the perfect home, investment property, or commercial space with{" "}
-            <span className="font-semibold">Ritusunrise Real Estate</span>. Your
-            trusted partner in the Abu Dhabi real estate market.
+            Find the perfect home, investment property, or commercial space with{' '}
+            <span className="font-semibold" itemProp="name">Ritusunrise Real Estate</span>. Your
+            trusted partner in the Abu Dhabi real estate market since <span itemProp="foundingDate">2015</span>.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
             <a
-              href="#properties"
+              href="https://uae.dubizzle.com/property-agencies/ritu-sunrise-real-estate-general-management-llc-7449/?tab=ads"
               className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-300 text-center shadow-lg w-full sm:w-auto"
+              itemProp="url"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               View Properties
             </a>
