@@ -6,6 +6,10 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
+// This page is statically generated at build time
+export const dynamic = 'force-static';
+export const revalidate = 3600; // Revalidate every hour
+
 export default function Home() {
   return (
     <>
