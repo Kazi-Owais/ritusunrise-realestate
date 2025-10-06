@@ -133,7 +133,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           async 
           suppressHydrationWarning
         />
-        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3309935086775911"
+     crossorigin="anonymous"></script>
         {/* Add web vitals monitoring */}
         <script
           dangerouslySetInnerHTML={{
