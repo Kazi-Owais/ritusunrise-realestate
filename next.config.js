@@ -4,14 +4,13 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   compress: true,
   poweredByHeader: false,
   generateEtags: true,
   transpilePackages: ['framer-motion'],
   experimental: {
     esmExternals: 'loose',
-    optimizeCss: true,
+    optimizeCss: false,
     scrollRestoration: true,
   },
   // Configure CDN in production
@@ -21,19 +20,18 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    qualities: [25, 50, 75, 100],
     minimumCacheTTL: 60,
     // Enable CDN for images in production
     domains: isProduction ? ['your-cdn-domain.com'] : [],
   },
   async rewrites() {
-    return [
-      {
-        source: '/favicon.ico',
-        destination: '/favicon.ico',
-      },
-    ]
+    return []
   },
   async headers() {
+    if (!isProduction) {
+      return [];
+    }
     return [
       // HTML pages - cache for 1 hour, revalidate on client
       {

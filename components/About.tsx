@@ -20,7 +20,7 @@ export default function About() {
           viewport={{ once: true }}
           className="text-4xl font-bold mb-6 text-gray-800"
         >
-          About <span className="text-green-600">Ritusunrise Real Estate</span>
+          About <span className="text-accent">Ritusunrise Real Estate</span>
         </motion.h2>
 
         {/* Description */}
@@ -48,8 +48,8 @@ export default function About() {
               className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               {/* Icon with aria-label for accessibility */}
-              <div className="bg-green-50 p-4 rounded-full mb-4" aria-label={s.label}>
-                <s.icon className="w-8 h-8 text-green-600" aria-hidden="true" />
+              <div className="bg-accent/10 p-4 rounded-full mb-4" aria-label={s.label}>
+                <s.icon className="w-8 h-8 text-accent" aria-hidden="true" />
               </div>
 
               {/* Stat Value */}

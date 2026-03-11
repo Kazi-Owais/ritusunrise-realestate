@@ -70,7 +70,6 @@ export function useMeasureInteraction() {
     observer.observe({
       type: 'event',
       buffered: true,
-      durationThreshold: 0, // Log all events
     });
     
     return () => observer.disconnect();

@@ -29,7 +29,6 @@ export default function Hero() {
           alt="Luxury Property in Abu Dhabi - Ritusunrise Real Estate"
           fill
           priority
-          quality={100}
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover object-center"
           itemProp="image"
@@ -48,7 +47,7 @@ export default function Hero() {
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6 drop-shadow-lg">
             Discover Your Dream{' '}
-            <span className="text-green-500" itemProp="name">Property</span> in Abu Dhabi
+            <span className="text-yellow-500" itemProp="name">Property</span> in Abu Dhabi
           </h1>
           <meta itemProp="description" content="Find luxury properties in Abu Dhabi with Ritusunrise Real Estate. Your trusted partner for buying, selling, and renting properties in the UAE." />
           <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 max-w-3xl mx-auto">
@@ -59,7 +58,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
             <a
               href="https://uae.dubizzle.com/property-agencies/ritu-sunrise-real-estate-general-management-llc-7449/?tab=ads"
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-300 text-center shadow-lg w-full sm:w-auto"
+              className="bg-accent hover:bg-accent-dark text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-300 text-center shadow-lg w-full sm:w-auto"
               itemProp="url"
               target="_blank"
               rel="noopener noreferrer"

@@ -48,7 +48,7 @@ export default function Contact() {
         {/* Contact Info */}
         <div>
           <h2 className="text-4xl font-bold mb-6 text-gray-800">
-            Get in <span className="text-green-600">Touch</span>
+            Get in <span className="text-accent">Touch</span>
           </h2>
           <p className="text-gray-600 mb-8 text-lg">
             Have questions or want to work with us? Reach out and our team will
@@ -57,19 +57,19 @@ export default function Contact() {
 
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <MapPin className="w-6 h-6 text-green-600" />
+              <MapPin className="w-6 h-6 text-accent" />
               <p className="text-gray-700">Abu Dhabi, UAE</p>
             </div>
             <div className="flex items-center gap-4">
-              <Phone className="w-6 h-6 text-green-600" />
+              <Phone className="w-6 h-6 text-accent" />
               <p className="text-gray-700">Office: 025509616 &nbsp;|&nbsp; Mobile: 0526018711</p>
             </div>
             <div className="flex items-center gap-4">
-              <Mail className="w-6 h-6 text-green-600" />
+              <Mail className="w-6 h-6 text-accent" />
               <p className="text-gray-700">ritusunriserealestategm@gmail.com</p>
             </div>
             <div className="flex items-center gap-4">
-              <Clock className="w-6 h-6 text-green-600" />
+              <Clock className="w-6 h-6 text-accent" />
               <p className="text-gray-700">Mon - Fri: 9am - 6pm</p>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function Contact() {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full bg-accent text-white py-3 rounded-lg font-semibold hover:bg-accent-dark transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {loading ? 'Sending...' : 'Send Message'}
           </Button>

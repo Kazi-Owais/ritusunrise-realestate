@@ -66,7 +66,7 @@ export default function Header() {
       <header className="fixed w-full z-50 bg-white shadow-md py-2">
         <div className="container mx-auto px-4">
           <div className="h-16 flex items-center justify-between">
-            <div className="w-32 h-8 bg-gray-200 rounded"></div>
+            <div className="w-48 h-12 bg-gray-200 rounded"></div>
             <div className="hidden md:flex items-center space-x-8">
               {Array(4).fill(0).map((_, i) => (
                 <div key={i} className="w-16 h-4 bg-gray-200 rounded"></div>
@@ -82,19 +82,19 @@ export default function Header() {
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-md py-2' : 'bg-white/90 backdrop-blur-sm py-4'
+        scrolled || menuOpen ? 'bg-white shadow-md py-2' : 'bg-white/90 backdrop-blur-sm py-4'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center h-full" aria-label="Home">
+          <Link href="/" className="flex items-center" aria-label="Home">
             <Image
-              src="/ritusunrise-logo.png"
+              src="/ritusunrise-logo.png?v=6"
               alt="Ritusunrise Real Estate logo"
-              width={180}
-              height={50}
-              className="h-12 w-auto object-contain"
+              width={350}
+              height={150}
+              className="w-32 sm:w-40 md:w-48 h-auto object-contain"
               priority
             />
           </Link>
@@ -111,7 +111,7 @@ export default function Header() {
                 >
                   <div className="relative group">
                     <Button
-                      className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
+                      className="flex items-center gap-1 text-gray-700 hover:text-accent transition-colors"
                       aria-haspopup="true"
                       aria-expanded={desktopDropdown === item.label}
                       onClick={() => setDesktopDropdown(desktopDropdown === item.label ? null : item.label)}
@@ -145,7 +145,7 @@ export default function Header() {
                       <Link
                         key={sub.label}
                         href={sub.href}
-                        className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
+                        className="block px-4 py-2 text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors"
                         onClick={() => {
                           setDesktopDropdown(null);
                           setMenuOpen(false);
@@ -160,7 +160,7 @@ export default function Header() {
                 <Link
                   key={item.label}
                   href={item.href || "#"}
-                  className="text-gray-700 hover:text-green-600 transition-colors"
+                  className="text-gray-700 hover:text-accent transition-colors"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
@@ -172,7 +172,7 @@ export default function Header() {
           {/* Desktop CTA */}
           <Link
             href="#contact"
-            className="hidden lg:inline-block bg-green-600 text-white px-6 py-2.5 rounded-lg shadow hover:bg-green-700 transition-colors font-semibold"
+            className="hidden lg:inline-block bg-accent text-white px-6 py-2.5 rounded-lg shadow hover:bg-accent-dark transition-colors font-semibold"
           >
             Contact Us
           </Link>
@@ -209,7 +209,7 @@ export default function Header() {
               <div key={item.label} className="border-b border-gray-100">
                 <button
                   onClick={() => toggleMobileDropdown(item.label)}
-                  className="flex w-full justify-between items-center py-3 text-gray-700 hover:text-green-600"
+                  className="flex w-full justify-between items-center py-3 text-gray-700 hover:text-accent"
                 >
                   <span>{item.label}</span>
                   <svg
@@ -237,7 +237,7 @@ export default function Header() {
                     <Link
                       key={sub.label}
                       href={sub.href}
-                      className="block pl-6 pr-2 py-2 text-gray-600 hover:text-green-600 hover:bg-gray-50 rounded"
+                      className="block pl-6 pr-2 py-2 text-gray-600 hover:text-accent hover:bg-gray-50 rounded"
                       onClick={() => setMenuOpen(false)}
                     >
                       {sub.label}
@@ -249,7 +249,7 @@ export default function Header() {
               <Link
                 key={item.label}
                 href={item.href!}
-                className="block py-3 border-b border-gray-100 text-gray-700 hover:text-green-600"
+                className="block py-3 border-b border-gray-100 text-gray-700 hover:text-accent"
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}
@@ -259,7 +259,7 @@ export default function Header() {
 
           <Link
             href="#contact"
-            className="block bg-green-600 text-white px-4 py-3 rounded-lg shadow hover:bg-green-700 text-center font-semibold mt-4"
+            className="block bg-accent text-white px-4 py-3 rounded-lg shadow hover:bg-accent-dark text-center font-semibold mt-4"
             onClick={() => setMenuOpen(false)}
           >
             Contact Us

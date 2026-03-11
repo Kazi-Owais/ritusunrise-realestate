@@ -1,6 +1,9 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://ritusunriserealestate.ae
 
 # Sitemaps
 Sitemap: https://ritusunriserealestate.ae/sitemap.xml

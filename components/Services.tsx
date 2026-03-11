@@ -60,8 +60,8 @@ const ServicesSection: FC = () => {
               className="h-full rounded-2xl bg-white p-6 sm:p-8 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               <div className="flex justify-center mb-4 sm:mb-6">
-                <div className="bg-emerald-100 p-4 rounded-full">
-                  <Icon className="h-8 w-8 text-emerald-600" />
+                <div className="bg-yellow-100 p-4 rounded-full">
+                  <Icon className="h-8 w-8 text-yellow-600" />
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 sm:mb-4">

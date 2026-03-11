@@ -3,14 +3,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 import { generateHreflangTags } from './HreflangTags';
-import { usePerformanceOptimization, useMeasureInteraction } from './hooks/usePerformance';
-
-// Client-side only component for performance optimizations
-function PerformanceOptimizer() {
-  usePerformanceOptimization();
-  useMeasureInteraction();
-  return null;
-}
+import PerformanceOptimizer from './_components/PerformanceOptimizer';
 
 export const metadata: Metadata = {
   title: {
@@ -43,9 +36,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/api/favicon', sizes: 'any' },
-      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
-      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/favicon-optimized.png?v=1', type: 'image/png' },
     ],
     apple: [
       { url: '/apple-touch-icon.png' },
@@ -92,8 +83,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <head>
         {generateHreflangTags()}
-        {/* Preload critical resources */}
-        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
@@ -111,49 +100,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `
               window.__perf = window.__perf || {};
               window.__perf.budget = {
-                fcp: 1800, // First Contentful Paint (ms)
-                lcp: 2500, // Largest Contentful Paint (ms)
-                cls: 0.1,  // Cumulative Layout Shift
-                inp: 200,  // Interaction to Next Paint (ms)
+                fcp: 1800,
+                lcp: 2500,
+                cls: 0.1,
+                inp: 200,
               };
             `,
           }}
         />
       </head>
       <body className="antialiased" suppressHydrationWarning>
-        <PerformanceOptimizer />
+{/* <PerformanceOptimizer /> */}
         {children}
         <Toaster position="top-right" />
         <Analytics />
-        
-        {/* Load non-critical scripts with defer */}
-        <script 
-          src="/_next/static/chunks/polyfills.js" 
-          noModule 
-          async 
-          suppressHydrationWarning
-        />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3309935086775911"
-     crossorigin="anonymous"></script>
-        {/* Add web vitals monitoring */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const script = document.createElement('script');
-                script.src = 'https://unpkg.com/web-vitals@2.1.4/dist/web-vitals.attribution.iife.js';
-                script.onload = function() {
-                  webVitals.onINP(console.log, {reportAllChanges: true});
-                  webVitals.onCLS(console.log);
-                  webVitals.onLCP(console.log);
-                  webVitals.onFID(console.log);
-                  webVitals.onFCP(console.log);
-                };
-                document.head.appendChild(script);
-              })();
-            `,
-          }}
-        />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3309935086775911" crossOrigin="anonymous"></script>
         {/* Structured Data for Google */}
         <script
           type="application/ld+json"

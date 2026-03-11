@@ -101,7 +101,7 @@ export default function Header() {
                 {item.children ? (
                   <>
                     <Button
-                      className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
+                      className="flex items-center gap-1 text-gray-700 hover:text-accent transition-colors"
                       onClick={() => setDesktopDropdown(desktopDropdown === item.label ? null : item.label)}
                       aria-haspopup="true"
                       aria-expanded={desktopDropdown === item.label}
@@ -134,7 +134,7 @@ export default function Header() {
                         <Link
                           key={sub.label}
                           href={sub.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
+                          className="block px-4 py-2 text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors"
                           onClick={() => setDesktopDropdown(null)}
                         >
                           {sub.label}
@@ -145,7 +145,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href || "#"}
-                    className="text-gray-700 hover:text-green-600 transition-colors"
+                    className="text-gray-700 hover:text-accent transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -158,7 +158,7 @@ export default function Header() {
           <div className="lg:hidden">
             <Button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-gray-700 hover:text-green-600"
+              className="text-gray-700 hover:text-accent"
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             >
               {menuOpen ? (
@@ -237,7 +237,7 @@ export default function Header() {
                       <Link
                         key={sub.label}
                         href={sub.href}
-                        className="block py-2 text-gray-600 hover:text-green-600"
+                        className="block py-2 text-gray-600 hover:text-accent"
                         onClick={() => setMenuOpen(false)}
                       >
                         {sub.label}
@@ -249,7 +249,7 @@ export default function Header() {
                 <Link
                   key={item.label}
                   href={item.href || "#"}
-                  className="block py-2 text-gray-700 hover:text-green-600"
+                  className="block py-2 text-gray-700 hover:text-accent"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
@@ -258,7 +258,7 @@ export default function Header() {
             )}
             <Link
               href="#contact"
-              className="block bg-green-600 text-white px-4 py-3 rounded-lg shadow hover:bg-green-700 text-center font-semibold mt-4"
+              className="block bg-accent text-white px-4 py-3 rounded-lg shadow hover:bg-accent-dark text-center font-semibold mt-4"
               onClick={() => setMenuOpen(false)}
             >
               Contact Us
