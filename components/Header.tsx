@@ -66,7 +66,7 @@ export default function Header() {
       <header className="fixed w-full z-50 bg-white shadow-md py-2">
         <div className="container mx-auto px-4">
           <div className="h-16 flex items-center justify-between">
-            <div className="w-48 h-12 bg-gray-200 rounded"></div>
+            <div className="w-36 h-12 bg-gray-200 rounded"></div>
             <div className="hidden md:flex items-center space-x-8">
               {Array(4).fill(0).map((_, i) => (
                 <div key={i} className="w-16 h-4 bg-gray-200 rounded"></div>
@@ -90,11 +90,11 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center" aria-label="Home">
             <Image
-              src="/ritusunrise-logo.png?v=6"
+              src="/ritusunrise-logo.png"
               alt="Ritusunrise Real Estate logo"
-              width={350}
-              height={150}
-              className="w-32 sm:w-40 md:w-48 h-auto object-contain"
+              width={200}
+              height={80}
+              className="w-36 sm:w-44 md:w-52 h-auto object-contain"
               priority
             />
           </Link>
